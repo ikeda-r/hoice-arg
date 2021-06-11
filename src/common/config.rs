@@ -532,6 +532,21 @@ make_conf! {
             |val| bool_of_match(val)
         }
 
+        simplify, simplify: bool {
+            help "Clause-wise simplification is active.",
+            long_help "\
+                If active, clauses are simplified.
+            ",
+            long "--simplify",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "on",
+        } {
+            |val| bool_of_match(val)
+        }
+
         split_strengthen, split_strengthen: bool {
             help "(De)activates strengthening when splitting is active.",
             long_help "\
