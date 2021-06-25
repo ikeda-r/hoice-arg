@@ -562,6 +562,73 @@ impl<'core> IceLearner<'core> {
             self.instance[pred], data.pos().len(), data.neg().len(), data.unc().len()
         }
 
+        use rand::Rng;
+        let mut rng = rand::thread_rng();
+        let b: bool = rng.gen();
+        if conf.ice.datagen {
+            if b {
+                let mut or_args = Vec::with_capacity(100);
+                for sample in data.pos() {
+                    let args = sample.get();
+                    // let n = args.len() - 1;
+                    let mut i = 0;
+                    let mut and_args = Vec::with_capacity(100);
+                    for val in args.iter() {
+                        if let Some(term1) = val.to_term() {
+                            let v;
+                            if term1.typ().is_int() {
+                                v = term::int_var(i)
+                            } else {
+                                if term1.typ().is_bool() {
+                                    v = term::bool_var(i)
+                                } else {
+                                    v = term::real_var(i)
+                                }
+                            }
+                            let term = term::eq(v, term1);
+                            and_args.push(term);
+                        } else {
+                        };
+                        i = i + 1;
+                    }
+                    let term2 = term::and(and_args);
+                    //println!("pred for {}: {}", pred, term2);
+                    or_args.push(term2);
+                }
+                return Ok(Some(term::or(or_args)));
+            } else {
+                let mut and_args = Vec::with_capacity(100);
+                for sample in data.neg() {
+                    let args = sample.get();
+                    // let n = args.len() - 1;
+                    let mut i = 0;
+                    let mut or_args2 = Vec::with_capacity(100);
+                    for val in args.iter() {
+                        if let Some(term1) = val.to_term() {
+                            let v;
+                            if term1.typ().is_int() {
+                                v = term::int_var(i)
+                            } else {
+                                if term1.typ().is_bool() {
+                                    v = term::bool_var(i)
+                                } else {
+                                    v = term::real_var(i)
+                                }
+                            }
+                            let term = term::not(term::eq(v, term1));
+                            or_args2.push(term);
+                        } else {
+                        };
+                        i = i + 1;
+                    }
+                    let term2 = term::or(or_args2);
+                    //println!("pred for {}: {}", pred, term2);
+                    and_args.push(term2);
+                }
+                return Ok(Some(term::and(and_args)));
+            }
+        };
+
         self.unfinished.push((vec![], data));
 
         'learning: while let Some((mut branch, data)) = self.choose_branch(pred) {

@@ -821,6 +821,21 @@ make_conf! {
             |mtch| bool_of_match(mtch)
         }
 
+        datagen, datagen: bool {
+            help "Eager generation of positive/negative data.",
+            long_help "\
+                If active, eagerly generate positive/negative data.\
+            ",
+            long "--datagen",
+            validator bool_validator,
+            val_name bool_format,
+            default "no",
+            takes_val,
+            val_nb 1,
+        } {
+            |mtch| bool_of_match(mtch)
+        }
+
         gain_pivot, gain_pivot: f64 {
             help "Gain in percent above which hoice considers a qualifier satisfactory.",
             long_help "\
