@@ -566,7 +566,7 @@ impl<'core> IceLearner<'core> {
         let mut rng = rand::thread_rng();
         let b: bool = rng.gen();
         if conf.ice.datagen {
-            if b {
+            if (data.pos().len() > 0 && b) || data.neg().len() == 0 {
                 let mut or_args = Vec::with_capacity(100);
                 for sample in data.pos() {
                     let args = sample.get();
