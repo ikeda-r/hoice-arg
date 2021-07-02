@@ -989,7 +989,7 @@ impl Data {
     /// The `clause` input is necessary for unsat core extraction.
     ///
     /// Does not propagate.
-    fn add_pos(&mut self, clause: ClsIdx, pred: PrdIdx, args: VarVals) -> bool {
+    pub fn add_pos(&mut self, clause: ClsIdx, pred: PrdIdx, args: VarVals) -> bool {
         if self.instance[clause].lhs_preds().is_empty() {
             // println!("positive clause");
             if let Some(e) = self.entry_points.as_mut() {
@@ -1010,7 +1010,7 @@ impl Data {
     /// The `clause` input is necessary for unsat core extraction.
     ///
     /// Does not propagate.
-    fn add_neg(&mut self, pred: PrdIdx, args: VarVals) -> bool {
+    pub fn add_neg(&mut self, pred: PrdIdx, args: VarVals) -> bool {
         self.add_neg_untracked(pred, args)
     }
     /// Adds a negative example.

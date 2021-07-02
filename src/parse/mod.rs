@@ -359,7 +359,7 @@ pub struct ParserCxt {
     /// Memory for backtracking.
     mem: Vec<Cursor>,
     /// Map from predicate names to predicate indices.
-    pred_name_map: BTreeMap<String, PrdIdx>,
+    pub pred_name_map: BTreeMap<String, PrdIdx>,
 }
 impl ParserCxt {
     /// Constructor.

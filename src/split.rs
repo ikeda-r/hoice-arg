@@ -101,6 +101,7 @@ fn run_on(
         log_info! { "Starting learning..." }
     }
 
+    println!("running a teacher");
     let res = profile!(
       |_profiler| wrap {
         run_teacher(instance.clone(), & model)

@@ -836,6 +836,21 @@ make_conf! {
             |mtch| bool_of_match(mtch)
         }
 
+        datafile, datafile: String {
+            help "Specify data file.",
+            long_help "\
+                Specify data file.\
+            ",
+            long "--datafile",
+//            validator bool_validator,
+            val_name "string",
+            default "default.dat",
+            takes_val,
+            val_nb 1,
+        } {
+            |mtch| mtch.to_string()
+        }
+
         gain_pivot, gain_pivot: f64 {
             help "Gain in percent above which hoice considers a qualifier satisfactory.",
             long_help "\

@@ -3,6 +3,8 @@
 //! [teach]: fn.teach.html
 //! (Teacher's teach function)
 
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 use std::time::Duration;
 
 use crate::{
@@ -367,6 +369,58 @@ impl<'a> Teacher<'a> {
         Ok(())
     }
 
+    pub fn val_of_str(&mut self, token: &str) -> Val {
+        if token == "true" {
+            return val::bool(true);
+        } else if token == "false" {
+            return val::bool(false);
+        };
+        if let Ok(x) = token.parse::<i32>() {
+            return val::int(x);
+        }
+        return val::int(-999);
+    }
+
+    pub fn loaddata(&mut self) -> Res<()> {
+        //        println!("adding data");
+        if conf.ice.datafile == "default.dat" {
+            //            println!("no datafile specified");
+            return Ok(());
+        };
+        let mut pred_name_map = BTreeMap::new();
+        for _pred in self.instance.preds() {
+            //println!("pred: {} -> {}", _pred.name, _pred.idx);
+            pred_name_map.insert(_pred.name.clone(), _pred.idx);
+        }
+        //self.data.add_pos(0.into(), 0.into(), var_vals!( (bool false) (int 100)));
+        let f = File::open(conf.ice.datafile.clone()).unwrap();
+        let reader = BufReader::new(f);
+        for line in reader.lines() {
+            let line = line.unwrap();
+            let mut tokens = line.split_whitespace().rev().collect::<Vec<_>>();
+            if let Some(header) = tokens.pop() {
+                if header == "P" || header == "N" {
+                    if let Some(pname) = tokens.pop() {
+                        if let Some(pid) = pred_name_map.get(pname) {
+                            let mut args = vec![];
+                            //                            println!("{}", pid);
+                            while let Some(token) = tokens.pop() {
+                                args.push(self.val_of_str(token));
+                            }
+                            let vals: var_to::vals::RVarVals = args.into();
+                            if header == "P" {
+                                self.data.add_pos(0.into(), *pid, var_to::vals::new(vals));
+                            } else {
+                                self.data.add_neg(*pid, var_to::vals::new(vals));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        self.data.propagate()?;
+        Ok(())
+    }
     /// Adds a new learner.
     pub fn add_learner<L>(&mut self, learner: L, mine: bool) -> Res<()>
     where
@@ -376,7 +430,9 @@ impl<'a> Teacher<'a> {
             let index = self.learners.next_index();
             let name = learner.description(mine);
             let instance = self.instance.clone();
+            self.loaddata()?;
             let data = self.data.to_lrn_data();
+            //            println!("{}", data.to_string_info(&()).unwrap());
             let (to_learner, learner_recv) = FromTeacher::channel();
             ::std::thread::Builder::new()
                 .name(name.clone())
