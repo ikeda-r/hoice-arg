@@ -307,7 +307,7 @@ impl<'a> Teacher<'a> {
 
         log_debug! { "generating data from initial cex..." }
         let nu_stuff = self.instance.cexs_to_data(&mut self.data, cexs)?;
-        if !nu_stuff {
+        if !nu_stuff && (conf.ice.datafile == "default.dat") {
             bail! { "translation of initial cexs to data generated no new data" }
         }
         self.run_assistant()?;
