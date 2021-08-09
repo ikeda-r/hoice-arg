@@ -139,9 +139,9 @@ pub fn read_and_work<R: ::std::io::Read>(
             .parse(&mut instance);
 
         line_off += lines_parsed;
-        for (pred, id) in parser_cxt.pred_name_map.iter() {
-            println!("pred: {} {}", pred, id);
-        }
+        //for (pred, id) in parser_cxt.pred_name_map.iter() {
+        //    println!("pred: {} {}", pred, id);
+        //}
         let parse_res = match parse_res {
             Ok(res) => res,
             Err(e) => {

@@ -562,11 +562,11 @@ impl<'core> IceLearner<'core> {
             self.instance[pred], data.pos().len(), data.neg().len(), data.unc().len()
         }
 
-        use rand::Rng;
-        let mut rng = rand::thread_rng();
-        let b: bool = rng.gen();
-        if conf.ice.datagen {
-            if (data.pos().len() > 0 && b) || data.neg().len() == 0 {
+        // use rand::Rng;
+        //let mut rng = rand::thread_rng();
+        //let b: bool = rng.gen();
+        if conf.ice.datagen > self.count {
+            if (data.pos().len() > 0 && self.count % 2 == 0) || data.neg().len() == 0 {
                 let mut or_args = Vec::with_capacity(100);
                 for sample in data.pos() {
                     let args = sample.get();

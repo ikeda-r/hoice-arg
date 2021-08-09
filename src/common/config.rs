@@ -821,19 +821,19 @@ make_conf! {
             |mtch| bool_of_match(mtch)
         }
 
-        datagen, datagen: bool {
+        datagen, datagen: usize {
             help "Eager generation of positive/negative data.",
             long_help "\
                 If active, eagerly generate positive/negative data.\
             ",
             long "--datagen",
-            validator bool_validator,
-            val_name bool_format,
-            default "no",
+            validator int_validator,
+            val_name "int",
+            default "0",
             takes_val,
             val_nb 1,
         } {
-            |mtch| bool_of_match(mtch)
+            |mtch| int_of_match(mtch)
         }
 
         datafile, datafile: String {
