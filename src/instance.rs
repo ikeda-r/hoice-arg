@@ -465,17 +465,28 @@ impl Instance {
                 let pred = &self[pred];
                 write!(w, "({}", pred)?;
                 let mut prev: VarIdx = 0.into();
+
                 for (var, arg) in args.index_iter() {
                     let old_var = pred.original_sig_map()[var];
                     for var in VarRange::new(prev, old_var) {
-                        write!(w, " {}", pred.original_sig()[var].default_val())?
+                        let v = if let Some(cnst) = pred.const_args_of(var) {
+                            cnst.val().expect("non-constant term is in const_args")
+                        } else {
+                            pred.original_sig()[var].default_val()
+                        };
+                        write!(w, " {}", v)?
                     }
                     prev = old_var;
                     prev.inc();
                     write!(w, " {}", arg)?
                 }
                 for var in VarRange::new(prev, pred.original_sig().next_index()) {
-                    write!(w, " {}", pred.original_sig()[var].default_val())?
+                    let v = if let Some(cnst) = pred.const_args_of(var) {
+                        cnst.val().expect("non-constant term is in const_args")
+                    } else {
+                        pred.original_sig()[var].default_val()
+                    };
+                    write!(w, " {}", v)?
                 }
                 write!(w, ")")
             },
@@ -1317,6 +1328,27 @@ impl Instance {
         fun::write_for_model(w, pref, &model)?;
 
         for defs in model {
+            // TODO: Add constant conditions by better way
+            let defs: &Vec<(PrdIdx, Vec<TTerms>)> = &defs
+                .clone()
+                .into_iter()
+                .map(|(pred, mut tterms)| {
+                    let mut cst_conds = TTermSet::new();
+                    for (original_var, ty) in self[pred].original_sig().index_iter() {
+                        if let Some(cnst) = self[pred].const_args_of(original_var) {
+                            let original_var_term = term::var(*original_var, ty.clone());
+                            cst_conds
+                                .insert_term(term::eq(original_var_term.clone(), cnst.clone()));
+                        }
+                    }
+                    if cst_conds.len() != 0 {
+                        tterms.push(TTerms::conj(None, cst_conds.clone()));
+                    }
+
+                    (pred, tterms)
+                })
+                .collect();
+
             if defs.is_empty() {
                 ()
             } else if defs.len() == 1 {
@@ -1668,6 +1700,11 @@ impl ::std::ops::Index<PrdIdx> for Instance {
     type Output = Pred;
     fn index(&self, index: PrdIdx) -> &Pred {
         &self.preds[index]
+    }
+}
+impl ::std::ops::IndexMut<PrdIdx> for Instance {
+    fn index_mut(&mut self, index: PrdIdx) -> &mut Pred {
+        &mut self.preds[index]
     }
 }
 impl ::std::ops::Index<ClsIdx> for Instance {

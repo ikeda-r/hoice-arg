@@ -201,6 +201,12 @@ pub fn read_and_work<R: ::std::io::Read>(
                 }
                 print_stats("top preproc", preproc_profiler);
 
+                // // ここでPreInstanceがほしい
+                // for (pred, _p) in instance.preds().index_iter() {
+                //     instance.write_pred_sig(&mut stdout(), pred);
+                // }
+                // std::process::exit(0);
+
                 model = if instance.simplify_clauses() {
                     if let Some(maybe_model) = instance.is_trivial_conj()? {
                         // Pre-processing already decided satisfiability.

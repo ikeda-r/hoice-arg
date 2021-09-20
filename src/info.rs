@@ -94,6 +94,8 @@ pub struct Pred {
     /// Companion functions. Function that were created specifically for this predicate, and must
     /// be given to the user before giving the definition for this predicate.
     funs: Vec<Fun>,
+    /// Constant conditions to add
+    const_args: VarHMap<Term>,
 }
 
 impl Pred {
@@ -112,6 +114,7 @@ impl Pred {
             def: None,
             strength: None,
             funs: vec![],
+            const_args: VarHMap::new(),
         }
     }
 
@@ -250,6 +253,12 @@ impl Pred {
     /// before giving the definition for this predicate.
     pub fn funs(&self) -> &[Fun] {
         &self.funs
+    }
+
+    /// Get constant terms of given argument if exists
+    ///
+    pub fn const_args_of(&self, var: VarIdx) -> Option<&Term> {
+        self.const_args.get(&var)
     }
 
     /// A variable that does not appear in the **original** signature of the predicate.
@@ -446,6 +455,19 @@ impl Pred {
     /// Adds a companion function.
     pub fn add_fun(&mut self, fun: Fun) {
         self.funs.push(fun)
+    }
+
+    /// Adds a constant condition.
+    pub fn add_const_condition(&mut self, original_var: VarIdx, cst_cond: Term) {
+        // exclude more than one condition
+        if self.const_args.contains_key(&original_var) {
+            panic!(
+                "more than one constant conditions{:#?} and {:#?}",
+                self.const_args[&original_var], cst_cond
+            );
+        }
+
+        self.const_args.insert(original_var, cst_cond);
     }
 
     /// Finalizes the predicate information.

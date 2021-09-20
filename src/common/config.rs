@@ -616,6 +616,22 @@ make_conf! {
         } {
             |val| bool_of_match(val)
         }
+        const_prop, const_prop: bool {
+            help "(De)activates constant propagation reduction.",
+            long_help "\
+                If active, hoice will attempt to propagate constant if some arguments of predicates on rhs are all constant. \
+                TODO: .\
+            ",
+            long "--const_prop",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "on",
+            hidden,
+        } {
+            |val| bool_of_match(val)
+        }
     }
 
     impl SubConf for PreprocConf {

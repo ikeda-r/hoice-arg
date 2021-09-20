@@ -19,6 +19,7 @@ pub mod utils;
 pub mod arg_red;
 pub mod bias_unroll;
 pub mod cfg_red;
+pub mod const_prop;
 pub mod fun_preds;
 pub mod one_lhs;
 pub mod one_rhs;
@@ -26,8 +27,9 @@ pub mod strict_neg_clauses;
 pub mod unroll;
 
 pub use self::{
-    arg_red::ArgRed, bias_unroll::BiasedUnroll, cfg_red::CfgRed, fun_preds::FunPreds,
-    one_lhs::OneLhs, one_rhs::OneRhs, strict_neg_clauses::StrictNeg, unroll::RUnroll,
+    arg_red::ArgRed, bias_unroll::BiasedUnroll, cfg_red::CfgRed, const_prop::ConstProp,
+    fun_preds::FunPreds, one_lhs::OneLhs, one_rhs::OneRhs, strict_neg_clauses::StrictNeg,
+    unroll::RUnroll,
 };
 pub use crate::instance::PreInstance;
 
@@ -282,6 +284,8 @@ pub struct Reductor<'a> {
     strict_neg: Option<StrictNeg>,
     /// Optional predicate-to-function reduction.
     fun_preds: Option<FunPreds>,
+    /// Optional constant propagation based variable elimination.
+    const_prop: Option<ConstProp>,
 }
 impl<'a> Reductor<'a> {
     /// Constructor.
@@ -336,6 +340,7 @@ impl<'a> Reductor<'a> {
         } else {
             some_new! { FunPreds if active and fun_preds }
         };
+        let const_prop = some_new! { ConstProp if active and const_prop };
 
         Ok(Reductor {
             instance,
@@ -348,6 +353,7 @@ impl<'a> Reductor<'a> {
             runroll,
             strict_neg,
             fun_preds,
+            const_prop,
         })
     }
 
@@ -435,6 +441,13 @@ impl<'a> Reductor<'a> {
             }
 
             let changed = run! { fun_preds };
+
+            if changed {
+                changed_since_cfg_red = true;
+                continue;
+            }
+
+            let changed = run! { const_prop };
 
             if changed {
                 changed_since_cfg_red = true;
