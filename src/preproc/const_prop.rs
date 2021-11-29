@@ -37,10 +37,8 @@ impl RedStrat for ConstProp {
         }
     }
 
-    // TODO: add constant constraints to model
     fn apply(&mut self, instance: &mut PreInstance) -> Res<RedInfo> {
         let (const_conditions, to_keep) = self.run(instance);
-        // eprintln!("to_keep = \n{:#?}", to_keep);
         // add constant conditions to corresponding clauses
         for (cls_idx, cst_conds) in const_conditions {
             for cond in cst_conds {
@@ -147,7 +145,6 @@ impl ConstProp {
                     if self.keep[pred].contains(&var) {
                         continue;
                     }
-                    // TODO: confirm RTerm::val(self).is_some() is equivalent to be constant
                     match arg.val() {
                         Some(_cstval) => {
                             self.const_terms[pred][var].insert(arg.clone());
@@ -191,7 +188,11 @@ impl ConstProp {
                         cst_conds.insert(term::eq(leftargs[var_idx].clone(), cst.clone()));
                     }
                 }
-                const_conditions.insert(cls_idx, cst_conds);
+                if let Some(condset) = const_conditions.get_mut(&cls_idx) {
+                    condset.extend(cst_conds);
+                } else {
+                    const_conditions.insert(cls_idx, cst_conds);
+                }
             }
         }
         const_conditions
