@@ -1,0 +1,2365 @@
+; Running top pre-processing
+; running simplify
+; simplify: did nothing
+; running arg_reduce
+; arg_reduce: did nothing
+; running one_rhs
+;   unfolding loop_exit
+; one_rhs: did nothing
+; running one_lhs
+;   unfolding loop_exit
+; one_lhs: prd: 1, cls rm: 1, cls add: 0, args rm: 0
+; running arg_reduce
+; arg_reduce: did nothing
+; running one_rhs
+; one_rhs: did nothing
+; running one_lhs
+; one_lhs: did nothing
+; running const_prop
+; const_prop: did nothing
+; running cfg_red
+; cfg_red: did nothing
+; running strict_neg
+; strict_neg: prd: 1, cls rm: 0, cls add: 0, args rm: 0
+; Starting learning...
+running a teacher
+;   initial candidates:
+;     loop: (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+; broadcasting...
+; done broadcasting...
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | loop only has negative (2) and unclassified (0) data
+; ice | legal check ok, assuming everything negative
+
+; Current candidate(s) from ice learner:
+; loop:
+;   false
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 1, neg: 2, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= v_0 0) (= v_1 0) (= v_2 0) (= v_3 0))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 2, neg: 2, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= (+ (- 1) v_0) 0)) (not (= (+ v_1 (- 1)) 0)) (not (= (+ v_2 (- 1)) 0)) (not (= v_3 0))) (or (not (= (+ v_2 (- 1)) 0)) (not (= v_3 0)) (not (= v_0 0)) (not (= v_1 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 2, neg: 3, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (= v_0 0) (= v_1 0) (= v_2 0) (= v_3 0)) (and (= v_1 0) (= (+ (- 1) v_0) 0) (= (+ v_2 (- 1)) 0) (= (+ (- 1) v_3) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 3, neg: 3, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_3)) 0))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 4, neg: 5, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (>= v_0 0) (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 7, neg: 5, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (>= v_3 1) (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (* (- 1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 7, neg: 7, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (>= v_0 0) (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 7, neg: 9, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 7, neg: 11, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      true,
+; ice |   sorted:      true,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 9, neg: 11, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (>= (+ (* (- 1) v_1) v_3) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (not (= (+ (* (- 1) v_1) v_3) 0))) (and (>= v_0 0) (= (+ v_2 (* (- 1) v_0)) 0) (>= v_2 0) (= (+ (* (- 1) v_1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+; ) constraints (
+;   0 | (loop 0 1 2 2) => (loop 1 2 2 2)
+; ) constraint map(
+;   (loop 1 2 2 2) -> 0
+;   (loop 0 1 2 2) -> 0
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 9, neg: 11, unc: 2)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (>= (+ (* (- 1) v_1) v_3) 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (not (= v_1 0)) (>= v_0 1))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 9, neg: 14, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1)) (and (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      true,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 9, neg: 16, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= v_0 0) (= (+ v_2 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_1 (* (- 1) v_0)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 11, neg: 16, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ v_2 (* (- 1) v_1)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 11, neg: 18, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (= (+ v_1 (* (- 1) v_0)) 0) (= (+ v_2 (* (- 1) v_3)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (= (+ v_2 (* (- 1) v_3)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ v_2 (* (- 1) v_1)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+; ) constraints (
+; ) constraint map(
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 13, neg: 18, unc: 0)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ (* (- 1) v_1) v_3) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 13, neg: 18, unc: 2)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= v_0 0) (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_1 (* (- 1) v_0)) 0))) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 1 2 3 3) => (loop 2 3 3 3)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 2 3 3 3) -> 1
+;   (loop 1 2 3 3) -> 1
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 13, neg: 18, unc: 4)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= v_0 0) (= (+ v_1 (* (- 1) v_0)) 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ (* (- 1) v_1) v_3) 0))) (and (= (+ v_2 (* (- 1) v_0)) 0) (>= v_2 0) (= (+ (* (- 1) v_1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0))) (and (= (+ v_2 (* (- 1) v_1)) 0) (>= v_2 0) (= (+ (* (- 1) v_1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= v_0 1) (not (= (+ v_1 (* (- 1) v_0)) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 v_2 v_0 v_3 (- 11)) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 1 2 3 3) => (loop 2 3 3 3)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 2 3 3 3) -> 1
+;   (loop 1 2 3 3) -> 1
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 13, neg: 20, unc: 4)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      true,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 13, neg: 23, unc: 2)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1)) (and (= (+ v_2 (* (- 1) v_0)) 0) (= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 13, neg: 23, unc: 4)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (>= (+ (* (- 1) v_2) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_1 v_2 v_0 (- 8)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 25, unc: 4)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1)) (and (= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (>= (+ v_2 (* (- 1) v_0) (* (- 1) v_3)) 1)) (and (= (+ v_2 (* (- 1) v_0)) 0) (= (+ (* (- 1) v_1) v_3) 0) (>= (+ v_0 (* (- 1) v_2) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 28, unc: 4)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_3)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_0 (- 2)) 0) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (= (+ v_1 v_2 v_0 v_3 (- 9)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_3)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_0 (- 2)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 14, neg: 28, unc: 6)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (= (+ v_1 v_2 v_0 (- 6)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_1 (- 1)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_0 (- 2)) 0)) (not (= (+ v_1 v_2 v_0 (- 6)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 30, unc: 6)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (= (+ v_1 v_2 v_0 v_3 (- 9)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_1 (- 1)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_0 (- 2)) 0)) (not (= (+ v_1 v_2 v_0 v_3 (- 9)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 14, neg: 32, unc: 6)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ (* (- 1) v_1) v_3) 0) (= (+ v_1 (- 1)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_0 (* (- 1) v_3)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 32, unc: 8)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (= (+ v_1 v_2 v_0 v_3 (- 6)) 0)) (and (= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (= (+ v_1 v_2 (* (- 1) v_0) v_3 (- 5)) 0) (not (= (+ v_1 v_2 v_0 v_3 (- 6)) 0)))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 34, unc: 8)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (= (+ v_2 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (= (+ v_1 (* (- 1) v_0)) 0) (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) (* 2 v_0)) 1) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))) (and (>= (+ v_2 (* (- 1) v_1) (* (- 1) v_0) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 35, unc: 10)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 v_2 v_0 v_3 (- 6)) 0) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | (loop 3 4 5 5) => (loop 4 5 5 5)
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 4 5 5 5) -> 2
+;   (loop 3 4 5 5) -> 2
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 37, unc: 10)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 v_2 v_0 v_3 (- 6)) 0) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_3)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 41, unc: 8)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (* (- 1) v_1) (- 1)) (= (+ v_1 v_2 v_0 v_3 (- 6)) 0) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 v_0 (- 3)) 0) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+;   (loop 5 0 5 (- 2))
+;   (loop 4 (- 1) 5 (- 2))
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 43, unc: 8)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ (* (- 1) v_1) v_3) 0)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0)) (= (+ v_1 v_2 v_0 (- 4)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0) (= (+ v_1 v_2 (* (- 1) v_0) v_3 (- 5)) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+;   (loop 5 0 5 (- 2))
+;   (loop 4 (- 1) 5 (- 2))
+;   (loop 2 (- 2) 4 (- 1))
+;   (loop 0 6 0 4)
+;   (loop (- 1) 5 0 4)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: true,
+;
+; ice | working on predicate loop (pos: 14, neg: 46, unc: 8)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (>= v_3 1) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (* (- 1) v_1) (- 1)) (= (+ v_1 v_2 v_0 v_3 (- 6)) 0) (not (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_1 (- 1)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+;   (loop 5 0 5 (- 2))
+;   (loop 4 (- 1) 5 (- 2))
+;   (loop 2 (- 2) 4 (- 1))
+;   (loop 0 6 0 4)
+;   (loop (- 1) 5 0 4)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+;   5 | (loop 1 1 3 1) => (loop 2 2 3 1)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+;   (loop 2 2 3 1) -> 5
+;   (loop 1 1 3 1) -> 5
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 46, unc: 10)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 (* (- 1) v_0) (* (- 1) v_2) 4) 0) (= (+ v_1 v_2 (* (- 1) v_0) v_3 (- 5)) 0) (not (= (+ v_1 v_2 (* (- 1) v_0) v_3 (- 4)) 0))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (= (+ v_1 v_2 (* (- 1) v_0) v_3 (- 4)) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+;   (loop 5 0 5 (- 2))
+;   (loop 4 (- 1) 5 (- 2))
+;   (loop 2 (- 2) 4 (- 1))
+;   (loop 0 6 0 4)
+;   (loop (- 1) 5 0 4)
+;   (loop 0 3 0 1)
+;   (loop (- 1) 2 0 1)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+;   5 | (loop 1 1 3 1) => (loop 2 2 3 1)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+;   (loop 2 2 3 1) -> 5
+;   (loop 1 1 3 1) -> 5
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      false,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 14, neg: 48, unc: 10)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_3)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) v_0) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; all learning data:
+; pos (
+;   (loop 0 0 0 0)
+;   (loop 1 0 1 1)
+;   (loop 0 0 2 2)
+;   (loop 0 0 0 1)
+;   (loop 1 1 2 2)
+;   (loop 1 1 1 1)
+;   (loop 0 0 1 1)
+;   (loop 2 1 2 2)
+;   (loop 1 0 2 2)
+;   (loop 2 1 3 3)
+;   (loop 1 0 3 3)
+;   (loop 1 1 1 2)
+;   (loop 0 0 1 2)
+;   (loop 3 2 3 3)
+;   (loop 1 1 2 3)
+;   (loop 0 0 2 3)
+; ) neg (
+;   (loop 1 1 1 0)
+;   (loop 0 0 1 0)
+;   (loop (- 1) (- 1) 1 0)
+;   (loop 0 1 0 0)
+;   (loop (- 1) 0 0 0)
+;   (loop (- 1) 2 (- 1) 1)
+;   (loop (- 2) 1 (- 1) 1)
+;   (loop 1 2 1 1)
+;   (loop 0 1 1 1)
+;   (loop 2 2 2 1)
+;   (loop 1 1 2 1)
+;   (loop 1 2 2 2)
+;   (loop 0 1 2 2)
+;   (loop 2 3 2 2)
+;   (loop 2 (- 1) 2 (- 3))
+;   (loop 1 (- 2) 2 (- 3))
+;   (loop 2 4 2 3)
+;   (loop 1 3 2 3)
+;   (loop 2 3 3 3)
+;   (loop 1 2 3 3)
+;   (loop 2 4 2 2)
+;   (loop 1 3 2 2)
+;   (loop 3 4 3 3)
+;   (loop 4 5 4 4)
+;   (loop 3 4 4 4)
+;   (loop 2 3 4 4)
+;   (loop 1 0 1 (- 1))
+;   (loop 0 (- 1) 1 (- 1))
+;   (loop 4 5 5 5)
+;   (loop 3 4 5 5)
+;   (loop 4 0 4 (- 1))
+;   (loop 3 (- 1) 4 (- 1))
+;   (loop 6 0 6 (- 1))
+;   (loop 5 (- 1) 6 (- 1))
+;   (loop 3 3 3 2)
+;   (loop 2 2 3 2)
+;   (loop 1 1 3 2)
+;   (loop 2 0 2 (- 2))
+;   (loop 1 (- 1) 2 (- 2))
+;   (loop 0 2 2 2)
+;   (loop 5 6 5 5)
+;   (loop 5 0 5 (- 2))
+;   (loop 4 (- 1) 5 (- 2))
+;   (loop 2 (- 2) 4 (- 1))
+;   (loop 0 6 0 4)
+;   (loop (- 1) 5 0 4)
+;   (loop 0 3 0 1)
+;   (loop (- 1) 2 0 1)
+; ) constraints (
+;   0 | (loop 1 2 2 3) => (loop 2 3 2 3)
+;   1 | (loop 0 (- 2) 2 (- 1)) => (loop 1 (- 1) 2 (- 1))
+;   2 | _
+;   3 | (loop 2 1 4 1) => (loop 3 2 4 1)
+;   4 | (loop (- 5) (- 10) (- 1) (- 13)) => (loop (- 4) (- 9) (- 1) (- 13))
+;   5 | (loop 1 1 3 1) => (loop 2 2 3 1)
+; ) constraint map(
+;   (loop 2 3 2 3) -> 0
+;   (loop 1 2 2 3) -> 0
+;   (loop 1 (- 1) 2 (- 1)) -> 1
+;   (loop 0 (- 2) 2 (- 1)) -> 1
+;   (loop 3 2 4 1) -> 3
+;   (loop 2 1 4 1) -> 3
+;   (loop (- 4) (- 9) (- 1) (- 13)) -> 4
+;   (loop (- 5) (- 10) (- 1) (- 13)) -> 4
+;   (loop 2 2 3 1) -> 5
+;   (loop 1 1 3 1) -> 5
+; ) positive examples staged (
+; ) negative examples staged (
+; ) modded (
+; ) neg (
+; )
+;
+; ice | starting learning
+; ice |   simple:      false,
+; ice |   sorted:      true,
+; ice |   skip_prelim: false,
+;
+; ice | working on predicate loop (pos: 16, neg: 48, unc: 10)
+
+; Current candidate(s) from ice learner:
+; loop:
+;   (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (or (and (>= v_0 0) (= v_1 0) (>= v_2 0) (>= (+ (* (- 1) v_2) v_3) 0) (>= (+ v_2 (* (- 1) v_0)) 0)) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (= (+ v_2 (* (- 1) v_0)) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1))) (and (or (>= (+ v_2 (* (- 1) v_0)) 1) (>= (+ (* (- 1) v_1) v_3) 0)) (>= (+ (* (- 1) v_2) v_3) 0) (or (not (= v_1 0)) (>= (* (- 1) v_0) 1) (>= (* (- 1) v_2) 1) (>= (+ v_2 (* (- 1) v_3)) 1) (>= (+ v_0 (* (- 1) v_2)) 1)) (not (= (+ v_2 (* (- 1) v_0)) 0)) (>= (+ (* (- 1) v_1) v_0) 0))))
+; looking for counterexamples in positive clauses (1)...
+; looking for counterexamples in strict negative clauses (1)...
+; looking for counterexamples in non-strict negative clauses (0)...
+; looking for counterexamples in implication clauses (1)...
+; sat
+
+sat

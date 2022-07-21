@@ -1,0 +1,80 @@
+(assert
+  (forall ( (n Int) (acc Int) )
+    (=>
+      (and
+        (loop_exit n acc)
+      )
+      (loop2 0 n acc)
+    )
+  )
+)
+
+(assert
+  (forall ( (i Int) (n Int) (acc Int) )
+    (=>
+      (and
+        (loop2 i n acc)
+        (<= i n)
+      )
+      (loop2 (+ i 1) n (+ (- 2) acc))
+    )
+  )
+)
+
+(assert
+  (forall ( (i Int) (n Int) (acc Int) )
+    (=>
+      (and
+        (loop2 i n acc)
+        (> i n)
+      )
+      (loop2_exit n acc)
+    )
+  )
+)
+
+(assert
+  (forall ( (n Int) (acc Int) )
+    (=>
+      (and
+        (loop2_exit n acc)
+      )
+      (= 0 acc)
+    )
+  )
+)
+
+(assert
+  (forall ( (n Int) )
+    (=>
+      (and
+        (>= n 0)
+      )
+      (loop 0 n 0)
+    )
+  )
+)
+
+(assert
+  (forall ( (i Int) (n Int) (acc Int) )
+    (=>
+      (and
+        (loop i n acc)
+        (<= i n)
+      )
+      (loop (+ i 1) n (+ 2 acc))
+    )
+  )
+)
+
+(assert
+  (forall ( (i Int) (n Int) (acc Int) )
+    (=>
+      (and
+        (loop i n acc)
+        (> i n)
+      )
+      (loop_exit n acc)
+    )
+  )
+)

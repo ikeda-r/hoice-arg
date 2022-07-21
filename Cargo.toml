@@ -1,0 +1,47 @@
+[package]
+name = "hoice"
+version = "1.9.0"
+authors = ["Adrien Champion <adrien.champion@email.com>"]
+description = "A ICE-based Horn clause solver."
+homepage = "https://github.com/hopv/hoice"
+repository = "https://github.com/hopv/hoice"
+readme = "README.md"
+categories = ["science"]
+keywords = ["machine learning", "verification", "proof"]
+license = "MIT"
+edition = "2018"
+
+[[bin]]
+name = "hoice"
+path = "src/bin/main.rs"
+doc = false
+
+[lib]
+name = "hoice"
+path = "src/hoice.rs"
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+debug-assertions = false
+panic = 'unwind'
+
+[features]
+bench = [ ]
+
+[dependencies]
+libc = "*"
+lazy_static = "*"
+clap = "*"
+hashconsing = "*"
+error-chain = "*"
+ansi_term = "*"
+rsmt2 = "^0.12"
+num = "*"
+mylib = { git = "https://github.com/AdrienChampion/mylib" }
+either = "*"
+rand = "*"
+rand_xorshift = "*"
+atty = "*"
