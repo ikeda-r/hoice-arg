@@ -259,13 +259,13 @@ impl Assistant {
         profile! { self "constraints received" => add data.constraints.len() }
 
         'all_constraints: for cstr in CstrRange::zero_to(data.constraints.len()) {
-            log! { @3
-                "trying to break\n{}",
-                data.constraints[cstr].to_string_info(self.instance.preds()).unwrap()
-            }
             // Can happen because of simplifications when propagating.
             if cstr > data.constraints.len() {
                 break;
+            }
+            log! { @3
+                "trying to break\n{}",
+                data.constraints[cstr].to_string_info(self.instance.preds()).unwrap()
             }
             if data.constraints[cstr].is_tautology() {
                 continue;

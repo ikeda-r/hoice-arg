@@ -4,3 +4,5 @@
 /src/common/revision.rs
 /rsc/*.smt2
 /.vscode
+/tmp/
+/hoice_out/
