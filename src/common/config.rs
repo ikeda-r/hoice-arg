@@ -444,6 +444,54 @@ make_conf! {
             |val| bool_of_match(val)
         }
 
+        arg_eq_red, arg_eq_red: bool {
+            help "arg_eq_red",
+            long_help "\
+                arg_eq_red\
+            ",
+            long "--arg_eq_red",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "on",
+            hidden,
+        } {
+            |val| bool_of_match(val)
+        }
+
+        arg_eq_red_check, arg_eq_red_check: bool {
+            help "arg_eq_red_check",
+            long_help "\
+                arg_eq_red_check\
+            ",
+            long "--arg_eq_red_check",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "off",
+            hidden,
+        } {
+            |val| bool_of_match(val)
+        }
+
+        arg_eq_red2, arg_eq_red2: bool {
+            help "arg_eq_red2",
+            long_help "\
+            arg_eq_red2\
+            ",
+            long "--arg_eq_red2",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "on",
+            hidden,
+        } {
+            |val| bool_of_match(val)
+        }
+
         cfg_red, cfg_red: bool {
             help "(De)activates control flow graph reduction.",
             long_help "\

@@ -751,6 +751,9 @@ impl<'a> PreInstance<'a> {
 
     /// Checks the underlying instance is correct.
     pub fn check(&self, blah: &'static str) -> Res<()> {
+        if !conf.preproc.arg_eq_red2 {
+            return Ok(())
+        }
         if !self.clauses_to_simplify.is_empty() {
             bail!("clauses_to_simplify is not empty: {}", blah)
         }
@@ -1086,6 +1089,137 @@ impl<'a> PreInstance<'a> {
         Ok(info)
     }
 
+
+    fn force_pred_left_2(
+        &mut self,
+        pred: PrdIdx,
+        qvars: Quantfed,
+        tterm_set: TTermSet,
+    ) -> Res<RedInfo> {
+        self.check("before `force_pred_left2`")?;
+
+        // let mut tterm_set = TTermSet::new() ;
+        // tterm_set.insert_terms(terms) ;
+        // for (pred, args) in pred_apps {
+        //   tterm_set.insert_pred_app(pred, args) ;
+        // }
+
+        // if tterm_set.is_empty() {
+        //     return self.force_true(pred);
+        // }
+
+        let mut info = RedInfo::new();
+
+        log_debug! {
+          "force pred left on {}...", conf.emph(& self.instance[pred].name)
+        }
+
+        // Forget the rhs clause.
+        // log_debug! {
+        //   "forgetting rhs clause"
+        // }
+        // debug_assert! { self.clauses_to_simplify.is_empty() }
+        // self.instance
+        //     .unlink_pred_rhs(pred, &mut self.clauses_to_simplify);
+        // let clause_to_rm = if let Some(clause) = self.clauses_to_simplify.pop() {
+        //     // Fail if illegal.
+        //     if self.clauses_to_simplify.pop().is_some() {
+        //         bail!(
+        //             "illegal context for `force_pred_left2`, \
+        //              {} appears in more than one rhs",
+        //             conf.emph(&self.instance[pred].name)
+        //         )
+        //     }
+        //     if self.instance.preds_of_clause(clause).0.get(&pred).is_some() {
+        //         bail!(
+        //             "illegal context for `force_pred_left2`, \
+        //              {} appears as both lhs and rhs",
+        //             conf.emph(&self.instance[pred].name)
+        //         )
+        //     }
+
+        //     clause
+        // } else {
+        //     bail!(
+        //         "illegal context for `force_pred_left`, \
+        //          {} appears in no rhs",
+        //         conf.emph(&self.instance[pred].name)
+        //     )
+        // };
+
+        // info.clauses_rmed += 1;
+        // self.instance.forget_clause(clause_to_rm)?;
+
+        // Update lhs clauses.
+        debug_assert! { self.clauses_to_simplify.is_empty() }
+        self.instance
+            .unlink_pred_lhs(pred, &mut self.clauses_to_simplify);
+        log! { @4 |
+          "updating lhs clauses ({})", self.clauses_to_simplify.len()
+        }
+
+        for clause in &self.clauses_to_simplify {
+            let clause = *clause;
+            log! { @4
+                "- working on lhs of clause {}",
+                self.instance[clause].to_string_info(self.instance.preds()).unwrap()
+            }
+
+            let argss = if let Some(argss) = self.instance.clauses[clause].drop_lhs_pred(pred) {
+                argss
+            } else {
+                bail!(
+                    "inconsistent instance state, \
+                     `pred_to_clauses` and clauses out of sync"
+                )
+            };
+
+            for args in argss {
+                // Generate fresh variables for the clause if needed.
+                let qual_map = self.instance.clauses[clause].fresh_vars_for(&qvars);
+
+                for term in tterm_set.terms() {
+                    if let Some((term, _)) = term.subst_total(&(&args, &qual_map)) {
+                        self.instance.clause_add_lhs_term(clause, term);
+                    } else {
+                        bail!("error during total substitution in `force_pred_left2`")
+                    }
+                }
+
+                for (pred, app_argss) in tterm_set.preds() {
+                    let pred = *pred;
+                    for app_args in app_argss {
+                        let mut nu_args = VarMap::with_capacity(args.len());
+                        for arg in app_args.iter() {
+                            if let Some((arg, _)) = arg.subst_total(&(&args, &qual_map)) {
+                                nu_args.push(arg)
+                            }
+                        }
+                        self.instance.clause_add_lhs_pred(clause, pred, nu_args)
+                    }
+                }
+            }
+
+            log! { @5
+              "done with clause: {}",
+              self.instance[clause].to_string_info(
+                self.instance.preds()
+              ).unwrap()
+            }
+
+            debug_assert! { self.instance[clause].preds_changed() }
+        }
+
+        // Actually force the predicate.
+        // self.force_pred(pred, TTerms::conj(Quant::exists(qvars), tterm_set))?;
+
+        info += self.simplify_clauses()?;
+
+        self.check("after `force_pred_left2`")?;
+
+        Ok(info)
+    }
+
     /// Extends the lhs occurences of a predicate with some a term.
     ///
     /// If `pred` appears in `pred /\ apps /\ trms => rhs` where `rhs` is a
@@ -1180,6 +1314,91 @@ impl<'a> PreInstance<'a> {
         }
 
         info += self.simplify_clauses()?;
+
+        self.check("after `extend_pred_left`")?;
+
+        Ok(info)
+    }
+
+    pub fn add_constraint_left(
+        &mut self,
+        constraints: &PrdHMap<crate::preproc::PredExtension>,
+        to_keep: &PrdHMap<VarSet>, 
+        fls_preds: &PrdSet,
+    ) -> Res<RedInfo> {
+        self.check("before `extend_pred_left`")?;
+
+        if !conf.preproc.arg_eq_red2 {
+            let mut w = std::io::stdout();
+            println!("clauses_after {{");
+            for (cls_idx, cls) in self.instance.clauses().index_iter() {
+                write!(w, "(assert (forall (")?;
+                let mut inactive = 0;
+                for var in &cls.vars {
+                    if var.active {
+                        write!(w, " (")?;
+                        var.idx.default_write(&mut w)?;
+                        write!(w, " {})", var.typ)?;
+                    } else {
+                        inactive += 1;
+                    }
+                }
+                if inactive == cls.vars.len() {
+                    write!(w, " (unused Bool)")?;
+                } 
+                write!(w, " ) ")?;
+                cls.expr_to_smt2(&mut w, &(true, &PrdSet::new(), &PrdSet::new(), self.instance.preds()))?;
+                writeln!(w, "))")?;
+            }
+            println!("}}");
+            return Ok(RedInfo::new());
+        }
+
+        let mut i = 0;
+        for pred in self.preds.clone() {
+            if pred.is_defined() {
+                continue;
+            }
+            if let Some(keep) = to_keep.get(&pred.idx) {
+                if keep.len() == pred.sig().len() {
+                    // tru_preds
+                    println!("add_constraint_left: keep.len() == pred.sig().len()");
+                    continue;
+                }
+                if keep.len() == 0 {
+                    bail!("not implemented yet");
+                } else if let Some(constraint) = constraints.get(&pred.idx) {
+                    println!("add_constraint_left: add pred");
+                    let name = "aer".to_string() + &i.to_string();
+                    i += 1;
+                    let old_sig = pred.sig();
+                    let mut sig = VarMap::with_capacity(keep.len());
+                    let mut var_map = VarMap::with_capacity(keep.len());
+                    for var in keep {
+                        sig.push(old_sig[*var].clone());
+                        var_map.push(term::var(*var, old_sig[*var].clone()));
+                    }
+                    let new_prd_idx = self.push_pred(name, sig);
+                    let the_constraint = constraint.0.iter().next().ok_or("constraint.0 must have only one element")?.clone();
+
+                    let mut tterm_set = TTermSet::with_capacities(1, 1);
+                    tterm_set.insert_term(the_constraint);
+                    let mut args = var_to::terms::new(var_map);
+                    tterm_set.insert_pred_app(new_prd_idx, args.clone());
+                    let def = TTerms::conj(None, tterm_set.clone());
+                    self.force_pred_right_2(pred.idx, VarHMap::new(), Some((new_prd_idx, args)), TTermSet::new())?;
+                    self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
+                    self.force_pred(pred.idx, def)?;
+                    // self.preds[pred.idx].set_def(def)?;
+                } else {
+                    bail!("not implemented yet");
+                }
+            } else {
+                bail!("to_keep must contain all non-defined preds");
+            }
+        }
+
+        let mut info = RedInfo::new(); // not implemented yet
 
         self.check("after `extend_pred_left`")?;
 
@@ -1485,6 +1704,118 @@ impl<'a> PreInstance<'a> {
         self.instance.forget_clause(clause_to_rm)?;
 
         self.check("after `force_pred_right`")?;
+
+        Ok(info)
+    }
+
+    fn force_pred_right_2(
+        &mut self,
+        pred: PrdIdx,
+        qvars: Quantfed,
+        pred_app: Option<(PrdIdx, VarTerms)>,
+        negated: TTermSet,
+    ) -> Res<RedInfo> {
+        self.check("before `force_pred_right_2`")?;
+
+        let mut info = RedInfo::new();
+
+        let quant = Quant::forall(qvars);
+
+        log! { @debug |
+            "force pred right on {}...", conf.emph(& self.instance[pred].name)
+        }
+
+        // Update rhs clauses.
+        debug_assert! { self.clauses_to_simplify.is_empty() }
+        self.instance
+            .unlink_pred_rhs(pred, &mut self.clauses_to_simplify);
+
+        'clause_iter: for clause in &self.clauses_to_simplify {
+            let clause = *clause;
+            log! { @4 | "working on clause #{}", clause }
+            log! { @4
+                "{}", self.instance[clause].to_string_info(self.instance.preds()).unwrap()
+            }
+
+            let rhs = self.instance.clauses[clause].unset_rhs();
+
+            if let Some((prd, subst)) = rhs {
+                let qual_map = self.instance.clauses[clause].nu_fresh_vars_for(&quant);
+
+                if pred == prd {
+                    log! { @5 "generating new rhs" }
+
+                    // New rhs.
+                    if let Some(&(prd, ref args)) = pred_app.as_ref() {
+                        let mut nu_args = VarMap::with_capacity(args.len());
+
+                        for arg in args.iter() {
+                            if let Some((nu_arg, _)) = arg.subst_total(&(&subst, &qual_map)) {
+                                nu_args.push(nu_arg)
+                            } else {
+                                bail!("unexpected failure during total substitution")
+                            }
+                        }
+
+                        self.instance.clause_force_rhs(clause, prd, nu_args)?
+                    }
+                    // No `else`, clause's rhs is already `None`.
+
+                    log! { @5 | "generating new lhs pred apps" }
+
+                    // New lhs predicate applications.
+                    for (pred, argss) in negated.preds() {
+                        let pred = *pred;
+                        for args in argss {
+                            let mut nu_args = VarMap::with_capacity(args.len());
+                            for arg in args.iter() {
+                                if let Some((nu_arg, _)) = arg.subst_total(&(&subst, &qual_map)) {
+                                    nu_args.push(nu_arg)
+                                } else {
+                                    bail!("unexpected failure during total substitution")
+                                }
+                            }
+                            self.instance.clause_add_lhs_pred(clause, pred, nu_args)
+                        }
+                    }
+
+                    log! { @5 | "generating new lhs terms" }
+
+                    // New lhs terms.
+                    for term in negated.terms() {
+                        if let Some((term, _)) = term.subst_total(&(&subst, &qual_map)) {
+                            self.instance.clause_add_lhs_term(clause, term);
+                        }
+                    }
+
+                    // Explicitely continueing, otherwise the factored error message
+                    // below will fire.
+                    continue 'clause_iter;
+                }
+            }
+
+            bail!(
+                "inconsistent instance state, \
+                 `pred_to_clauses` and clauses out of sync"
+            )
+        }
+
+        info += self.simplify_clauses()?;
+
+        // let clause_to_rm = self
+        //     .rm_only_lhs_clause_of(pred)
+        //     .chain_err(|| "illegal context for `force_pred_right2`")?;
+
+        // Actually force the predicate.
+        // self.force_pred(
+        //     pred,
+        //     TTerms::disj_of_pos_neg(quant, pred_app.map(|(pred, args)| (pred, args)), negated),
+        // )?;
+
+        // info.clauses_rmed += 1;
+        // self.instance.forget_clause(clause_to_rm)?;
+
+        self.check("after `force_pred_right2`")?;
 
         Ok(info)
     }
