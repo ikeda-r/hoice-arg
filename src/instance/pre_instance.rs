@@ -1,5 +1,7 @@
 //! A pre-instance wraps an instance for preprocessing.
 
+use std::mem::swap;
+
 use crate::{
     common::{
         smt::{ClauseTrivialExt, SmtImpl},
@@ -1095,8 +1097,8 @@ impl<'a> PreInstance<'a> {
         pred: PrdIdx,
         qvars: Quantfed,
         tterm_set: TTermSet,
-    ) -> Res<RedInfo> {
-        self.check("before `force_pred_left2`")?;
+    ) -> Res<Vec<ClsIdx>> {
+        // self.check("before `force_pred_left2`")?;
 
         // let mut tterm_set = TTermSet::new() ;
         // tterm_set.insert_terms(terms) ;
@@ -1213,11 +1215,12 @@ impl<'a> PreInstance<'a> {
         // Actually force the predicate.
         // self.force_pred(pred, TTerms::conj(Quant::exists(qvars), tterm_set))?;
 
-        info += self.simplify_clauses()?;
+        let mut ret = vec![];
+        swap(&mut ret, &mut self.clauses_to_simplify);
 
-        self.check("after `force_pred_left2`")?;
+        // self.check("after `force_pred_left2`")?;
 
-        Ok(info)
+        Ok(ret)
     }
 
     /// Extends the lhs occurences of a predicate with some a term.
@@ -1386,8 +1389,13 @@ impl<'a> PreInstance<'a> {
                     let mut args = var_to::terms::new(var_map);
                     tterm_set.insert_pred_app(new_prd_idx, args.clone());
                     let def = TTerms::conj(None, tterm_set.clone());
-                    self.force_pred_right_2(pred.idx, VarHMap::new(), Some((new_prd_idx, args)), TTermSet::new())?;
-                    self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
+                    self.check("before `force_pred_right2 and force_pred_left2`")?;
+                    let mut clauses_to_simplify_right = self.force_pred_right_2(pred.idx, VarHMap::new(), Some((new_prd_idx, args)), TTermSet::new())?;
+                    let mut clauses_to_simplify_left = self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
+                    clauses_to_simplify_right.append(&mut clauses_to_simplify_left);
+                    swap(&mut clauses_to_simplify_right, &mut self.clauses_to_simplify);
+                    self.simplify_clauses()?;
+                    self.check("after `force_pred_right2 and force_pred_left2`")?;
                     self.force_pred(pred.idx, def)?;
                     // self.preds[pred.idx].set_def(def)?;
                 } else {
@@ -1396,6 +1404,20 @@ impl<'a> PreInstance<'a> {
             } else {
                 bail!("to_keep must contain all non-defined preds");
             }
+            // println!("preds {{");
+            // for pred in self.instance.preds() {
+            //     print!("  {}: ", pred.name);
+            //     if pred.is_defined() {
+            //         println!("defined ");
+            //         continue;
+            //     }
+            //     let mut w = std::io::stdout();
+            //     if let Some(term) = pred.strength() {
+            //         term.write(&mut w, |w, var| var.default_write(w));
+            //     }
+            //     println!();
+            // }
+            // println!("}}");
         }
 
         let mut info = RedInfo::new(); // not implemented yet
@@ -1714,8 +1736,8 @@ impl<'a> PreInstance<'a> {
         qvars: Quantfed,
         pred_app: Option<(PrdIdx, VarTerms)>,
         negated: TTermSet,
-    ) -> Res<RedInfo> {
-        self.check("before `force_pred_right_2`")?;
+    ) -> Res<Vec<ClsIdx>> {
+        // self.check("before `force_pred_right_2`")?;
 
         let mut info = RedInfo::new();
 
@@ -1800,7 +1822,8 @@ impl<'a> PreInstance<'a> {
             )
         }
 
-        info += self.simplify_clauses()?;
+        let mut ret = vec![];
+        swap(&mut ret, &mut self.clauses_to_simplify);
 
         // let clause_to_rm = self
         //     .rm_only_lhs_clause_of(pred)
@@ -1815,9 +1838,9 @@ impl<'a> PreInstance<'a> {
         // info.clauses_rmed += 1;
         // self.instance.forget_clause(clause_to_rm)?;
 
-        self.check("after `force_pred_right2`")?;
+        // self.check("after `force_pred_right2`")?;
 
-        Ok(info)
+        Ok(ret)
     }
 
     /// Unrolls some predicates.
