@@ -50,7 +50,7 @@ impl RedStrat for ArgEqRed {
         println!("}}");
 
         let mut reductor = ArgEqReductor::new(instance)?;
-        let (constraints, to_keep, fls_preds) = reductor.run()?;
+        let (constraints, to_keep) = reductor.run()?;
 
         if conf.preproc.arg_eq_red_check {
             let mut red = false;
@@ -162,7 +162,7 @@ impl RedStrat for ArgEqRed {
         //     return Ok(RedInfo::new());
         // }
 
-        let mut res = instance.add_constraint_left(&constraints, &to_keep, &fls_preds)?;
+        let mut res = instance.add_constraint_left(&constraints, &to_keep)?;
 
         println!("clauses_after {{");
         for (cls_idx, cls) in instance.clauses().index_iter() {
@@ -590,7 +590,7 @@ impl ArgEqReductor {
     }
 
     /// Runs itself on all clauses of an instance.
-    pub fn run(mut self) -> Res<(PrdHMap<crate::preproc::PredExtension>, PrdHMap<VarSet>, PrdSet)> {
+    pub fn run(mut self) -> Res<(PrdHMap<crate::preproc::PredExtension>, PrdHMap<VarSet>)> {
         loop {
             if !self.handle_candidates()? {
                 break;
@@ -671,11 +671,11 @@ impl ArgEqReductor {
             }
         }
 
-        let fls_preds = ::std::mem::replace(&mut self.fls_preds, PrdSet::new());
+        // let tru_preds = ::std::mem::replace(&mut self.tru_preds, PrdSet::new());
 
         self.print(&constraints, &to_keep, &self.instance.clone());
 
-        Ok((constraints, to_keep, fls_preds))
+        Ok((constraints, to_keep))
     }
 }
 

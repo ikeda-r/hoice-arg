@@ -1327,7 +1327,6 @@ impl<'a> PreInstance<'a> {
         &mut self,
         constraints: &PrdHMap<crate::preproc::PredExtension>,
         to_keep: &PrdHMap<VarSet>, 
-        fls_preds: &PrdSet,
     ) -> Res<RedInfo> {
         self.check("before `extend_pred_left`")?;
 
@@ -1366,40 +1365,69 @@ impl<'a> PreInstance<'a> {
                 if keep.len() == pred.sig().len() {
                     // tru_preds
                     println!("add_constraint_left: keep.len() == pred.sig().len()");
-                    continue;
-                }
-                if keep.len() == 0 {
-                    bail!("not implemented yet");
+                    // do nothing
                 } else if let Some(constraint) = constraints.get(&pred.idx) {
-                    println!("add_constraint_left: add pred");
-                    let name = "aer".to_string() + &i.to_string();
-                    i += 1;
-                    let old_sig = pred.sig();
-                    let mut sig = VarMap::with_capacity(keep.len());
-                    let mut var_map = VarMap::with_capacity(keep.len());
-                    for var in keep {
-                        sig.push(old_sig[*var].clone());
-                        var_map.push(term::var(*var, old_sig[*var].clone()));
-                    }
-                    let new_prd_idx = self.push_pred(name, sig);
-                    let the_constraint = constraint.0.iter().next().ok_or("constraint.0 must have only one element")?.clone();
+                    if keep.len() == 0 {
+                        println!("add_constraint_left: pred is determined");
+                        let the_constraint = constraint.0.iter().next().ok_or("constraint.0 must have only one element")?.clone();
+                        let mut tterm_set = TTermSet::with_capacities(1, 0);
+                        tterm_set.insert_term(the_constraint.clone());
+                        let mut negated_tterm_set = TTermSet::with_capacities(1, 0);
+                        negated_tterm_set.insert_term(term::not(the_constraint));
+                        let def = TTerms::conj(None, tterm_set.clone());
+                        self.check("before `force_pred_right2 and force_pred_left2`")?;
+                        let mut clauses_to_simplify_right = self.force_pred_right_2(pred.idx, VarHMap::new(), None, negated_tterm_set)?;
+                        let mut clauses_to_simplify_left = self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
+                        clauses_to_simplify_right.append(&mut clauses_to_simplify_left);
+                        swap(&mut clauses_to_simplify_right, &mut self.clauses_to_simplify);
+                        self.simplify_clauses()?;
+                        self.check("after `force_pred_right2 and force_pred_left2`")?;
+                        self.force_pred(pred.idx, def)?;
+                    } else {
+                        println!("add_constraint_left: add pred");
+                        let name = "aer".to_string() + &i.to_string();
+                        i += 1;
+                        let old_sig = pred.sig();
+                        let mut sig = VarMap::with_capacity(keep.len());
+                        let mut var_map = VarMap::with_capacity(keep.len());
+                        for var in keep {
+                            sig.push(old_sig[*var].clone());
+                            var_map.push(term::var(*var, old_sig[*var].clone()));
+                        }
+                        let new_prd_idx = self.push_pred(name, sig);
+                        let the_constraint = constraint.0.iter().next().ok_or("constraint.0 must have only one element")?.clone();
 
-                    let mut tterm_set = TTermSet::with_capacities(1, 1);
-                    tterm_set.insert_term(the_constraint);
-                    let mut args = var_to::terms::new(var_map);
-                    tterm_set.insert_pred_app(new_prd_idx, args.clone());
+                        let mut tterm_set = TTermSet::with_capacities(1, 1);
+                        tterm_set.insert_term(the_constraint);
+                        let mut args = var_to::terms::new(var_map);
+                        tterm_set.insert_pred_app(new_prd_idx, args.clone());
+                        let def = TTerms::conj(None, tterm_set.clone());
+                        self.check("before `force_pred_right2 and force_pred_left2`")?;
+                        let mut clauses_to_simplify_right = self.force_pred_right_2(pred.idx, VarHMap::new(), Some((new_prd_idx, args)), TTermSet::new())?;
+                        let mut clauses_to_simplify_left = self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
+                        clauses_to_simplify_right.append(&mut clauses_to_simplify_left);
+                        swap(&mut clauses_to_simplify_right, &mut self.clauses_to_simplify);
+                        self.simplify_clauses()?;
+                        self.check("after `force_pred_right2 and force_pred_left2`")?;
+                        self.force_pred(pred.idx, def)?;
+                        // self.preds[pred.idx].set_def(def)?;
+                    }
+                } else {
+                    // fls_preds
+                    println!("add_constraint_left: fls_pred");
+                    let mut tterm_set = TTermSet::with_capacities(1, 0);
+                    tterm_set.insert_term(term::fls());
+                    let mut negated_tterm_set = TTermSet::with_capacities(1, 0);
+                    negated_tterm_set.insert_term(term::tru());
                     let def = TTerms::conj(None, tterm_set.clone());
                     self.check("before `force_pred_right2 and force_pred_left2`")?;
-                    let mut clauses_to_simplify_right = self.force_pred_right_2(pred.idx, VarHMap::new(), Some((new_prd_idx, args)), TTermSet::new())?;
+                    let mut clauses_to_simplify_right = self.force_pred_right_2(pred.idx, VarHMap::new(), None, negated_tterm_set)?;
                     let mut clauses_to_simplify_left = self.force_pred_left_2(pred.idx, VarHMap::new(), tterm_set)?;
                     clauses_to_simplify_right.append(&mut clauses_to_simplify_left);
                     swap(&mut clauses_to_simplify_right, &mut self.clauses_to_simplify);
                     self.simplify_clauses()?;
                     self.check("after `force_pred_right2 and force_pred_left2`")?;
                     self.force_pred(pred.idx, def)?;
-                    // self.preds[pred.idx].set_def(def)?;
-                } else {
-                    bail!("not implemented yet");
                 }
             } else {
                 bail!("to_keep must contain all non-defined preds");
