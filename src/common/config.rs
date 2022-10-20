@@ -476,6 +476,22 @@ make_conf! {
             |val| bool_of_match(val)
         }
 
+        arg_eq_red_count, arg_eq_red_count: bool {
+            help "arg_eq_red_count",
+            long_help "\
+                arg_eq_red_count\
+            ",
+            long "--arg_eq_red_count",
+            takes_val,
+            val_name bool_format,
+            val_nb 1,
+            validator bool_validator,
+            default "off",
+            hidden,
+        } {
+            |val| bool_of_match(val)
+        }
+
         arg_eq_red2, arg_eq_red2: bool {
             help "arg_eq_red2",
             long_help "\

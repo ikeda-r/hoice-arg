@@ -72,6 +72,20 @@ impl RedStrat for ArgEqRed {
             bail!("");
         }
 
+        if conf.preproc.arg_eq_red_count {
+            let mut before = 0;
+            let mut after = 0;
+            for (&pred, vars) in to_keep.iter() {
+                if instance[pred].is_defined() {
+                    continue;
+                }
+                before += instance[pred].sig.len();
+                after += vars.len();
+            }
+            eprintln!("{} {}", before, after);
+            bail!("");
+        }
+
         println!("to_keep {{");
         for (&pred, vars) in to_keep.iter() {
             if instance[pred].is_defined() {
