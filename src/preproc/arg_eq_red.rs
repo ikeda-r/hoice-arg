@@ -79,8 +79,10 @@ impl RedStrat for ArgEqRed {
                 if instance[pred].is_defined() {
                     continue;
                 }
-                before += instance[pred].sig.len();
-                after += vars.len();
+                if instance[pred].sig.len() > before {
+                    before = instance[pred].sig.len();
+                    after = vars.len();
+                }
             }
             eprintln!("{} {}", before, after);
             bail!("");
