@@ -27,6 +27,12 @@ impl RedStrat for ArgEqRed {
 
     fn apply(&mut self, instance: &mut PreInstance) -> Res<RedInfo> {
         let mut w = std::io::stdout();
+
+        if conf.preproc.arg_eq_red_count_clause {
+            eprintln!("{}", instance.clauses().len());
+            bail!("");
+        }
+        
         println!("clauses {{");
         for (cls_idx, cls) in instance.clauses().index_iter() {
             write!(w, "(assert (forall (")?;

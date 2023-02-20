@@ -39,8 +39,29 @@ impl RedStrat for ArgRed {
     fn apply(&mut self, instance: &mut PreInstance) -> Res<RedInfo> {
         let mut res = RedInfo::new();
         let keep = self.inner.run(instance);
-        res += instance.rm_args(keep)?;
         let mut w = std::io::stdout();
+        println!("clauses_before_RAF {{");
+        for (_, cls) in instance.clauses().index_iter() {
+            write!(w, "(assert (forall (")?;
+            let mut inactive = 0;
+            for var in &cls.vars {
+                if var.active {
+                    write!(w, " (")?;
+                    var.idx.default_write(&mut w)?;
+                    write!(w, " {})", var.typ)?;
+                } else {
+                    inactive += 1;
+                }
+            }
+            if inactive == cls.vars.len() {
+                write!(w, " (unused Bool)")?;
+            } 
+            write!(w, " ) ")?;
+            cls.expr_to_smt2(&mut w, &(true, &PrdSet::new(), &PrdSet::new(), instance.preds()))?;
+            writeln!(w, "))")?;
+        }
+        println!("}}");
+        res += instance.rm_args(keep)?;
         println!("clauses_before_FAR {{");
         for (_, cls) in instance.clauses().index_iter() {
             write!(w, "(assert (forall (")?;
